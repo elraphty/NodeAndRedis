@@ -73,6 +73,12 @@ app.post('/user/add', (req, res, next) => {
 
 });
 
+app.delete('/user/delete/:id', (req, res) => {
+  let id = req.params.id;
+  client.del(id);
+  res.redirect('/');
+});
+
 app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`)
 });
