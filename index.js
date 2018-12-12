@@ -29,7 +29,21 @@ app.get('/', (req, res) => {
 });
 
 // Search Processing
-app.post('/user/search', () => {
+app.post('/user/search', (req, res, next) => {
+  let id = req.body.id;
+
+  client.hgetall(id, (err, obj) => {
+    if(!obj) {
+      res.render('searchusers', {
+        error: 'User does not exists'
+      });
+    }else {
+      obj.id = id;
+      res.render('details', {
+        user: obj
+      });
+    }
+  }); 
 
 });
 

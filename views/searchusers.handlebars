@@ -1,4 +1,5 @@
 <h1 style="color: black !important;">Search Users</h1>
+{{#if error}} <span>{{error}}</span> {{/if}}
 <form class="form-inline" method="post" action="/user/search">
   <div class="form-group">
     <input class="form-control" name="id" type="text" placeholder="Search Users By Id" aria-label="Search">
